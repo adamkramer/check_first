@@ -3,11 +3,13 @@ Just-in-time VirusTotal checker (proof of concept)
 
 This is a proof of concept.
 
-The idea is that before running ANY file, it can be pushed through this program to see whether any of the AV engines on VT show it as a threat.
-I acknowlge that searching by hash only isn't the best way to find threats, but this isn't designed to replace AV.
+The idea is that before running ANY file, it can be pushed through this program to see whether any of the AV engines on VT show it as a threat. I acknowlge that searching by hash only isn't the best way to find threats, but this isn't designed to replace AV.
 
 Infact, for commonly distrubted malware - it is likely to be in the signatures of one of the engines pretty quickly.
 
+Potential way to use:
+1. I'm going to have this on my desktop so I can drop newly downloaded files onto it as a method to open them
+2. I may also include it in %PATH% so I can run it quickly via the cmd prompt
 
 Usage:
 check_first.exe [file to be checked] [/stop-unknowns] <-- optional

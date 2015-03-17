@@ -10,7 +10,7 @@ Infact, for commonly distrubted malware - it is likely to be in the signatures o
 
 
 Usage:
-check_first.exe <file to be checked> [/stop-unknowns]
+check_first.exe [file to be checked] [/stop-unknowns] <-- optional
 
 File to be checked can be anything, .exe .doc .pdf etc.
 

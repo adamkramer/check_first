@@ -26,7 +26,7 @@ What the program does is:
 
 2. Submits HASH via VirusTotal API (does not upload file at this point)
 
-3. If VT has *never* seen the hash, or has and there are no AV detections then the file will run/open as normal. If VT detects it as a threat, the web browser opens to the appropriate VT analysis page for the user to review
+3. If VT has *never* seen the hash, or has and there are no AV detections then the file will run/open as normal. If VT detects it as a threat, the web browser opens to the appropriate VT analysis page for the user to review (the file will NOT run)
 
 Optional:
 

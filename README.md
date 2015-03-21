@@ -3,13 +3,7 @@ Just-in-time VirusTotal checker
 
 This is a proof of concept.
 
-The idea is that before running ANY file, it can be pushed through this program to see whether any of the AV engines on VT show it as a threat. 
-
-I acknowledge that searching by hash alone isn't the best way to find threats!! but this isn't designed to replace AV.
-
-[NEW IN VERSION 1.1: You can upload you file to VT for a full live scan by all 57 of their engines before deciding]
-
-Infact, for commonly distrubted malware - it is likely to be in the signatures of one of the engines pretty quickly (they're good at what they do!)
+The idea is that before running ANY file, it can be pushed through this program to see whether any of the AV engines on VT show it as a threat (either by HASH or by uploading the file for a scan)
 
 Potential way to use:
 

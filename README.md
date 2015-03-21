@@ -7,6 +7,8 @@ The idea is that before running ANY file, it can be pushed through this program 
 
 I acknowledge that searching by hash alone isn't the best way to find threats!! but this isn't designed to replace AV.
 
+[NEW IN VERSION 1.1: You can upload you file to VT for a full live scan by all 57 of their engines before deciding]
+
 Infact, for commonly distrubted malware - it is likely to be in the signatures of one of the engines pretty quickly (they're good at what they do!)
 
 Potential way to use:
@@ -16,7 +18,7 @@ Potential way to use:
 2. I may also include it in %PATH% so I can run it quickly via the cmd prompt
 
 Usage:
-check_first.exe [file to be checked] [/stop-unknowns] <-- optional
+check_first.exe [file to be checked] [/stop-unknowns] [/submit-unknowns] [/wait-response]
 
 File to be checked can be any type: .exe .doc .pdf etc.
 
@@ -33,6 +35,7 @@ Optional:
 4. If /stop-unknowns is passed as a second argument, files that VT has never seen will not be run
 (Interestingly enough - VT has seen plenty of legit files and shows them as clean, try it on notepad.exe)
 
-TODO:
+5. If /submit-unknowns is passed, the file will be uploaded to VirusTotal if they have never seen it before for a full scan by all engines
 
-1. Create option to upload files (based on command line argument) if VT has never seen them and the user is happy for files to be uploaded
+6. If /wait-response is passed, the program will wait for the result of /submit-unknowns before making a decision (n.b. this can sometimes take a while if VT is busy)
+

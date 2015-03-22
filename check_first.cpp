@@ -21,7 +21,7 @@
 
 #define BUFSIZE 10240 // We will use a standard buffer size of 10KB
 #define APIKEY "79fa30f4f738b881b4f25b7347e240a909fb3f2b9454e1dc7d168e8ee04ea4c9" // This is my VirusTotal shared API key
-#define VERSION_NUMBER L"check_first v1.1"
+#define VERSION_NUMBER L"check_first v1.1.1"
 
 bool submit_VT_scan(LPWSTR pFile)
 {
@@ -219,7 +219,8 @@ int main(int argc, char* argv[])
 {
 
 	/* Display welcome string */
-	printf("check_first (v1.1) - Adam Kramer (2015)\n");
+	wprintf(VERSION_NUMBER);
+	printf(" - Adam Kramer (2015)\n");
 
 	/* Check whether an argument has been passed in, else display usage details */
 	if (argc < 2)
@@ -394,10 +395,6 @@ int main(int argc, char* argv[])
 		if (!submit_VT_scan(pFile))
 			return 1;
 
-		/* Obtain a new report after the file has been submitted */
-		if (!retrieve_VT_report(cCompleteHash, szBuffer, &dwRead))
-			return 1;
-
 		/* Check whether /wait-response is active, and action accordingly */
 		if (bWaitResponse)
 		{
@@ -405,9 +402,9 @@ int main(int argc, char* argv[])
 			for (;;)
 				if (strstr(szBuffer, "\"response_code\": 0"))
 				{
-					/* VT only allows 4 scans per minute, so the 20 second break is to be safe */
-					printf("Info: Scan result not ready, waiting 20 seconds...\n");
-					Sleep(20000);
+					/* VT only allows 4 scans per minute, so the 30 second break is to be safe */
+					printf("Info: Scan result not ready, waiting 30 seconds...\n");
+					Sleep(30000);
 
 					/* Get the latest report, to see whether it has been updated */
 					if (!retrieve_VT_report(cCompleteHash, szBuffer, &dwRead))
@@ -417,10 +414,16 @@ int main(int argc, char* argv[])
 					/* We break if the response_code is no longer 0 (i.e. it has now has the file processed) */
 					break;
 		}
+		else {
+
+			/* Obtain a new report after the file has been submitted */
+			if (!retrieve_VT_report(cCompleteHash, szBuffer, &dwRead))
+				return 1;
+		}
 	}
 
-	
-	
+	/* BEGIN RESULT PROCESSING */
+
 	if (strstr(szBuffer, "\"detected\": true"))
 	{
 		/* In this case, the response shows positive AV detections - so we will load the browser with results */

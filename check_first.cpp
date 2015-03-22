@@ -52,8 +52,8 @@ bool submit_VT_scan(LPWSTR pFile)
 		strcpy_s(cFileName, cFilePath);
 	else
 	{
-		strcpy_s(cFileName, cFilePathFinalSlash);
 		cFilePathFinalSlash++;
+		strcpy_s(cFileName, cFilePathFinalSlash);
 	}
 
 
